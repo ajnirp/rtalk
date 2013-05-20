@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def title
-		base_title = "Rtalk"
+		base_title = "RTalk"
 		if @title.nil?
 			base_title
 		else
