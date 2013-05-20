@@ -38,3 +38,8 @@ gem 'jquery-rails'
 gem 'debugger'
 
 gem 'therubyracer'
+
+#group :development do
+#  gem 'debugger'
+#  gem 'better_errors'
+#end
