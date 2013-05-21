@@ -47,6 +47,7 @@ group :development do
   gem 'faker'
   gem 'debugger'
   gem 'better_errors'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 gem 'compass'
