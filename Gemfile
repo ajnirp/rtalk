@@ -44,6 +44,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :development do
+  gem 'faker'
   gem 'debugger'
   gem 'better_errors'
 end

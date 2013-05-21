@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def new
     @title = "New Room"
   end
+
+  def join
+    @title = "Join"
+  end
 end
