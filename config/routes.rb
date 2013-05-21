@@ -1,4 +1,8 @@
 Rtalk::Application.routes.draw do
+  get "rooms/create"
+
+  get "rooms/destroy"
+
   resources :users
   get "users/new"
 
