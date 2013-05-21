@@ -1,12 +1,10 @@
 <h1>RTalk</h1>
-<p>Welcome to RTalk! Click the <b>New Session</b> button to start a session of your own, or the <b>Join Session</b> button to join an existing session.</p>
-<table>
-	<tr>
-		<td>
-			<%= link_to "New session", "#", :class => "session_button" %>
-		</td>
-		<td>
-			<%= link_to "Join session", "#", :class => "session_button" %>
-		</td>
-	</tr>
-</table>
+<p>Welcome to RTalk! Click the <strong>New Session</strong> button to start a session of your own, or the <strong>Join Session</strong> button to join an existing session.</p>
+<div class="btn-group">
+	<div style="float:left; margin:10px">
+		<%= button_to "New Session", new_path, :class => "btn btn-large btn-success", :method => :get %>
+	</div>
+	<div style="float:right; margin:10px">
+		<%= button_to "Join Session", '#', :class => "btn btn-large btn-primary", :method => :get %>
+	</div>
+</div>
