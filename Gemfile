@@ -48,6 +48,9 @@ group :development do
   gem 'debugger'
   gem 'better_errors'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'thin'
 end
 
 gem 'compass'
+
+gem 'private_pub'

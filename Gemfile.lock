@@ -36,6 +36,7 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    addressable (2.3.4)
     arel (3.0.2)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
@@ -57,6 +58,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    cookiejar (0.3.0)
     daemons (1.1.9)
     debugger (1.6.0)
       columnize (>= 0.3.1)
@@ -64,14 +66,33 @@ GEM
       debugger-ruby_core_source (~> 1.2.1)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.2)
+    em-http-request (1.0.3)
+      addressable (>= 2.2.3)
+      cookiejar
+      em-socksify
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.5.3)
+    em-socksify (0.2.1)
+      eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faker (1.0.1)
       i18n (~> 0.4)
+    faye (0.8.9)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.4.0)
+      rack (>= 1.0.0)
+      yajl-ruby (>= 1.0.0)
+    faye-websocket (0.6.1)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.2.0)
     fssm (0.2.10)
     hike (1.2.2)
+    http_parser.rb (0.5.3)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -86,6 +107,8 @@ GEM
     multi_json (1.7.3)
     pg (0.15.1)
     polyglot (0.3.3)
+    private_pub (1.0.3)
+      faye
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -139,6 +162,8 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    websocket-driver (0.2.0)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -153,6 +178,7 @@ DEPENDENCIES
   faker
   jquery-rails
   pg
+  private_pub
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3

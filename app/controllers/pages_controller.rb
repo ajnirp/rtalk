@@ -3,14 +3,6 @@ class PagesController < ApplicationController
   	@title = "Home"
   end
 
-  def contact
-  	@title = "Contact"
-  end
-
-  def help
-  	@title = "Help"
-  end
-
   def about
   	@title = "About"
   end
@@ -21,5 +13,9 @@ class PagesController < ApplicationController
 
   def join
     @title = "Join"
+  end
+
+  def chat
+    @title = "Chat"
   end
 end
