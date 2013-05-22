@@ -2,17 +2,20 @@ Rtalk::Application.routes.draw do
   get "messages/create"
   get "messages/index"
 
+  resources :rooms
+  
+  get "rooms/new"
   get "rooms/create"
   get "rooms/destroy"
+  match 'rooms/set_name' => 'rooms#set_name', :via => [:post]
 
   get "pages/home"
   get "pages/help"
   get "pages/about"
-  get "pages/new"
   get "pages/join"
 
   match '/about',   :to => 'pages#about'
-  match '/new', :to => 'pages#new'
+  match '/new', :to => 'rooms#new'
   match '/join', :to => 'pages#join'
 
   root :to => 'pages#home'

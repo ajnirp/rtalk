@@ -1,0 +1,19 @@
+<h1>Start a new room</h1>
+
+<p>Enter a name to use in chat (at least 6 characters and at most 40 characters long).</p>
+
+<%= form_tag rooms_set_name_path do %>
+	<div class="field">
+		<%= label_tag :name %>
+		<%= text_field_tag :name %>
+	</div>
+	<div class="actions">
+		<%= submit_tag "Choose name" %>
+	</div>
+<% end %>
+
+<p>Start chatting at</p>
+
+<!-- <p>Alternatively, generate a random name.</p>
+
+<button class="btn btn-info">Generate</button> -->

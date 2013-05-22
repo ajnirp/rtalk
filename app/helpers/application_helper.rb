@@ -1,4 +1,7 @@
 module ApplicationHelper
+
+	include RoomsHelper
+	
 	def show_title
 		base_title = "RTalk"
 		if @title.nil?
