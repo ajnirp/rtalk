@@ -1,19 +1,30 @@
 <h1>Start a new room</h1>
 
-<p>Enter a name to use in chat (at least 6 characters and at most 40 characters long).</p>
+<p>Enter a name to use in chat (at least 4 characters and at most 20 characters long). Use only alphanumeric characters. You will be redirected to the chat room after entering your name.</p>
 
-<%= form_tag rooms_set_name_path do %>
-	<div class="field">
-		<%= label_tag :name %>
-		<%= text_field_tag :name %>
+<%= form_tag rooms_set_name_path, :id => "newroom" do %>
+	<div class="field" style="float:left; margin-right:15px">
+		<%= text_field_tag :name, nil, :placeholder => "Name" %>
 	</div>
 	<div class="actions">
-		<%= submit_tag "Choose name" %>
+		<%= submit_tag "Choose name", :class => "btn btn-warning"%>
 	</div>
+	<% flash.each do |key, value| %>
+		<div class="flash text-<%= key %>"><%= value %></div>
+	<% end %>
 <% end %>
 
-<p>Start chatting at</p>
+<p>Alternatively, generate a random name by clicking on the <strong>Generate</strong> button below.</p>
 
-<!-- <p>Alternatively, generate a random name.</p>
+<%= javascript_tag do %>
+generate_name = function() {
+	var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 6; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+	$("#name").val(text);
+	$("#newroom").submit();
+}
+<% end %>
 
-<button class="btn btn-info">Generate</button> -->
+<%= link_to_function "Generate", "generate_name()", class: "btn btn-primary" %>

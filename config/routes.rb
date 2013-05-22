@@ -7,7 +7,9 @@ Rtalk::Application.routes.draw do
   get "rooms/new"
   get "rooms/create"
   get "rooms/destroy"
+  get "rooms/show"
   match 'rooms/set_name' => 'rooms#set_name', :via => [:post]
+  match 'rooms/router' => 'rooms#router', :via => [:post]
 
   get "pages/home"
   get "pages/help"
