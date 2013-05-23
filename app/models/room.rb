@@ -14,7 +14,7 @@
 class Room < ActiveRecord::Base
 	attr_accessible :key, :user_list
 
-	has_many :messages
+	has_many :messages, :dependent => :destroy
 
 	USERS_SEPARATOR = ","
 
@@ -44,5 +44,8 @@ class Room < ActiveRecord::Base
 	#overriding the find method for ActiveRecord
 	def self.find(id)
 		find_by_key(id)
+	end
+
+	def self.ordered
 	end
 end

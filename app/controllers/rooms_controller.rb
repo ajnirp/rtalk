@@ -17,6 +17,10 @@ class RoomsController < ApplicationController
 	end
 
 	def destroy
+		@room = Room.find(params[:id])
+		@room.remove_user(cookies[:user_name])
+		@room.destroy if @room.get_user_list.empty?
+		redirect_to root_path
 	end
 
 	def join_router
@@ -33,7 +37,7 @@ class RoomsController < ApplicationController
 	end
 
 	def show
-		@room = Room.find_by_key(params[:key])	
+		@room = Room.find(params[:id])	
 	end
 
 	private

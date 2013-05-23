@@ -4,5 +4,4 @@ module RoomsHelper
 		@key = new_key
 	end
 
-	
 end

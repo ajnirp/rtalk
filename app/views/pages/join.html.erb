@@ -18,7 +18,7 @@
 	</div>
 <% end %>
 
-<p>Alternatively, generate a random name by clicking on the <strong>Generate</strong> button below.</p>
+<p>Alternatively, generate a six-character random name by clicking on the <strong>Generate</strong> button below.</p>
 
 <%= javascript_tag do %>
 generate_name = function() {
@@ -27,10 +27,9 @@ generate_name = function() {
     for( var i=0; i < 6; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 	$("#name").val(text);
-	$("#joinroom").submit();
 }
 <% end %>
 
-<%= link_to_function "Generate", "generate_name()", class: "btn btn-primary" %>
+<%= link_to_function "Generate", "generate_name()", :class => "btn btn-primary" %>
 
 <p>You will be redirected to the room after entering a name and a valid key.</p>

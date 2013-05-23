@@ -1,26 +1,31 @@
 <h1>Chat</h1>
 
-<% current_room = Room.find_by_key(cookies[:room_key]) %>
 <% current_user = cookies[:user_name] %>
+<% user_count = @room.get_user_list.length %>
 
-<p>Welcome, <strong><%= current_user %></strong>! Type in the box at the bottom to start chatting.</p>
+<p>Welcome, <strong><%= current_user %></strong>! Type in the box at the bottom to start chatting. Click the <strong>Leave Room</strong> button when you want to leave the chat room. If everyone leaves the chat room, it will be removed and all your chat logs will be destroyed.</p>
 
 <p>
-	You are now chatting with:
+	There <%= "are" if user_count != 1 %><%= "is" if user_count == 1 %> <strong><%= pluralize(user_count, 'user') %></strong> here:
 </p>
+
 <ul>
-	<% current_room.get_user_list.each do |user| %>
-		<% if user != current_user %>
-			<li><strong><%= user %></strong></li>
-		<% end %>
+	<% @room.get_user_list.each do |user| %>
+		<li><strong><%= user %></strong></li>
 	<% end %>
 </ul>
 
 <ul id="chat">
-  <%= render 'messages/chatbox' %>
+	<% @room.messages.each do |msg| %>
+		<%= render partial: 'rooms/message', locals: {message: msg} %>
+	<% end %>
 </ul>
 
 <%= form_for Message.new, :remote => true do |f| %>
   <%= f.text_field :content %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :user_name, value: current_user %>
   <%= f.submit "Send" %>
 <% end %>
+
+<%= link_to "Leave Room", room_path(@room), :method => :delete, :class => "btn btn-danger" %>

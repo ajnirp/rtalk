@@ -1,0 +1,27 @@
+body {
+	background-image: url('mooning.png');
+}
+
+ul#chat {
+	list-style: none;
+	padding: 0;
+	height: 300px;
+	border: solid 1px #ccc;
+	margin: 5px 0;
+	overflow: auto;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background-color:#fff;
+	li {
+		margin: 2px 5px;
+		padding: 0;
+		.created_at {
+			float: right;
+			color: #777;
+			font-size: 11px;
+			padding-left: 4px;
+			padding-top: 2px;
+		}
+	}
+}
