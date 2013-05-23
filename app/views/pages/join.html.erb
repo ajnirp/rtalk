@@ -2,7 +2,10 @@
 
 <p>Choose a name to use in chat, and paste the key of the chat room you wish to enter.</p>
 
-<%= form_tag rooms_router_path do %>
+<%= form_tag join_router_path do %>
+	<% flash.each do |key, value| %>
+		<div class="flash text-<%= key %>"><%= value %></div>
+	<% end %>
 	<div class="field">
 		<%#= text_field_tag :name, cookies[:user_name], :placeholder => 'Name' %>
 		<%= text_field_tag :name, nil, :placeholder => 'Name' %>
@@ -13,9 +16,6 @@
 	<div class="actions">
 		<%= submit_tag "Submit", :class => "btn btn-warning"%>
 	</div>
-	<% flash.each do |key, value| %>
-		<div class="flash text-<%= key %>"><%= value %></div>
-	<% end %>
 <% end %>
 
-<p>Enter the chat room URL.</p>
+<p>You will be redirected to the room after entering a name and a valid key.</p>

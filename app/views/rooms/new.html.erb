@@ -2,7 +2,7 @@
 
 <p>Enter a name to use in chat (at least 4 characters and at most 20 characters long). Use only alphanumeric characters. You will be redirected to the chat room after entering your name.</p>
 
-<%= form_tag rooms_set_name_path, :id => "newroom" do %>
+<%= form_tag new_router_path, :id => "newroom" do %>
 	<div class="field" style="float:left; margin-right:15px">
 		<%= text_field_tag :name, nil, :placeholder => "Name" %>
 	</div>

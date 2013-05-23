@@ -8,8 +8,10 @@ Rtalk::Application.routes.draw do
   get "rooms/create"
   get "rooms/destroy"
   get "rooms/show"
-  match 'rooms/set_name' => 'rooms#set_name', :via => [:post]
-  match 'rooms/router' => 'rooms#router', :via => [:post]
+  get "rooms/join"
+
+  match 'rooms/new_router' => 'rooms#new_router', :via => [:post]
+  match 'rooms/join_router' => 'rooms#join_router', :via => [:post]
 
   get "pages/home"
   get "pages/help"
@@ -19,6 +21,9 @@ Rtalk::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/new', :to => 'rooms#new'
   match '/join', :to => 'pages#join'
+
+  match '/new_router', :to => 'rooms#new_router'
+  match '/join_router', :to => 'rooms#join_router'
 
   root :to => 'pages#home'
 
