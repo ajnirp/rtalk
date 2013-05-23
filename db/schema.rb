@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522135555) do
+ActiveRecord::Schema.define(:version => 20130523063456) do
 
   create_table "messages", :force => true do |t|
     t.string   "content"
@@ -21,10 +21,13 @@ ActiveRecord::Schema.define(:version => 20130522135555) do
   end
 
   create_table "rooms", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "key"
     t.string   "title"
+    t.text     "user_list",  :default => ""
   end
+
+  add_index "rooms", ["key"], :name => "index_rooms_on_key", :unique => true
 
 end

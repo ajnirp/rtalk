@@ -1,3 +1,26 @@
 <h1>Chat</h1>
 
-<p>Welcome, <%= cookies[:user_name] %>! Type in the box at the bottom to start chatting.</p>
+<% current_room = Room.find_by_key(cookies[:room_key]) %>
+<% current_user = cookies[:user_name] %>
+
+<p>Welcome, <strong><%= current_user %></strong>! Type in the box at the bottom to start chatting.</p>
+
+<p>
+	You are now chatting with:
+</p>
+<ul>
+	<% current_room.get_user_list.each do |user| %>
+		<% if user != current_user %>
+			<li><strong><%= user %></strong></li>
+		<% end %>
+	<% end %>
+</ul>
+
+<ul id="chat">
+  <%= render 'messages/chatbox' %>
+</ul>
+
+<%= form_for Message.new, :remote => true do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit "Send" %>
+<% end %>
