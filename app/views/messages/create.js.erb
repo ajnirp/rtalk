@@ -1,4 +1,5 @@
-<% publish_to "/messages/new" do %>
+
+<% publish_to room_path(@room) do %>
 	$("#chat").append("<%= j render partial: 'rooms/message', locals: {message: @message} %>");
 <% end %>
 $("#new_message")[0].reset();

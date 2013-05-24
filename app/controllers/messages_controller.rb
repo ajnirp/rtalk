@@ -6,6 +6,6 @@ class MessagesController < ApplicationController
 	def create
 		@room = Room.find_by_id(params[:message][:room_id])
 		@message = Message.create!(params[:message])
-		PrivatePub.publish_to('/messages/new', message: @message)
+		PrivatePub.publish_to(room_path(@room), message: @message)
 	end
 end

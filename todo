@@ -1,3 +1,8 @@
+bugs
+DONE all messages are being published to messages/new, use rooms/:room_id instead
+when new user joins, update users list
+
+High:
 auto links - gem
 room title
 fluid width
@@ -8,13 +13,16 @@ popover
 modal
 reverse chatbox message orientation (newest bottomost)
 auto scrolldown (create.js.erb)
-export chat history
+export chat history as .txt, .pdf
 send mail with link to chat room
 chat search
 go off the record (no chat history)
+replace forms with simple_form's forms
+upload files (see carrierwave, paperclip)
 
 Low:
 multi line chat
+get better emoticons
 
 Sub-low :)
 multiple rooms using tabs
