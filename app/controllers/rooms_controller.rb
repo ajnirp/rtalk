@@ -43,10 +43,9 @@ class RoomsController < ApplicationController
 	private
 
 		def generate_random_url
-			# generates a random URL stub used as the key for the room
-			letters = ('a'..'z').to_a
-			numbers = (0..9).to_a
-			return "id" + (letters + numbers).sample(25).join
+			# generates a 25-character random URL stub used as the key for the room
+			characters = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
+			return characters.sample(25).join
 		end
 
 		def valid_name?(name_input)

@@ -1,5 +1,4 @@
 <%# publish_to "/messages/new" do %>
-  $("#chat").append("<%= j render(@message) %>");
+	$("#chat").prepend("<%= j render partial: 'rooms/message', locals: {message: @message} %>");
 <%# end %>
-//$("#new_message")[0].reset();
-$("#chat").animate({scrollTop: $("chat")[0].height()}, 1000);
+$("#new_message")[0].reset();

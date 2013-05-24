@@ -3,7 +3,7 @@
 <% current_user = cookies[:user_name] %>
 <% user_count = @room.get_user_list.length %>
 
-<p>Welcome, <strong><%= current_user %></strong>! Type in the box at the bottom to start chatting. Click the <strong>Leave Room</strong> button when you want to leave the chat room. If everyone leaves the chat room, it will be removed and all your chat logs will be destroyed.</p>
+<p>Welcome, <strong><%= current_user %></strong>! <%= render 'show_url' %> Click the <strong>Leave Room</strong> button when you want to leave the chat room. If everyone leaves the chat room, it will be removed and all your chat logs will be destroyed.</p>
 
 <p>
 	There <%= "are" if user_count != 1 %><%= "is" if user_count == 1 %> <strong><%= pluralize(user_count, 'user') %></strong> here:
@@ -11,17 +11,22 @@
 
 <%= render 'show_users' %>
 
-<%= form_for Message.new, :remote => true do |f| %>
-	<%= f.text_field :content %>
-	<%= f.hidden_field :room_id, value: @room.id %>
-	<%= f.hidden_field :user_name, value: current_user %>
-	<%= f.submit "Send" %>
-<% end %>
+<div class="form-horizontal">
+	<%= form_for Message.new, remote: true, id: "new_message" do |f| %>
+		<%= f.text_field :content, style: "width:600px", placeholder: "Say something..." %>
+		<%= f.hidden_field :room_id, value: @room.id %>
+		<%= f.hidden_field :user_name, value: current_user %>
+		<%= f.submit "Send", class: "btn btn-info" %>
+	<% end %>
+</div>
 
 <ul id="chat">
 	<% @room.messages.reverse.each do |msg| %>
-		<%= render :partial => 'message', :locals => {:message => msg} %>
+		<%= render partial: 'message', locals: {message: msg} %>
 	<% end %>
 </ul>
 
-<%= link_to "Leave Room", room_path(@room), :method => :delete, :class => "btn btn-danger" %>
+<div style="margin-top:15px">
+	<%= link_to "Leave Room", room_path(@room), method: :delete, class: "btn btn-danger" %>
+	<%#= link_to "Help", "#", :class => "btn btn-success" %>
+</div>

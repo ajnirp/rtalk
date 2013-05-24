@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523102659) do
+ActiveRecord::Schema.define(:version => 20130524044106) do
 
   create_table "messages", :force => true do |t|
-    t.string   "content"
+    t.text     "content",    :limit => 255
     t.string   "user_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "room_id"
   end
 

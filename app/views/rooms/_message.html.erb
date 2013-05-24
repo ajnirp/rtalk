@@ -1,4 +1,5 @@
 <li>
 	<span class="created_at"><%= message.created_at.strftime("%H:%M") %></span>
-	<strong><%= message.user_name %>: </strong><%= message.content %>
+	<% new_message_content = parse_emoticons(message.content) %>
+	<strong><%= message.user_name %>: </strong><%= new_message_content %>
 </li>
