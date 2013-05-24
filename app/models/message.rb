@@ -10,6 +10,7 @@
 #  room_id    :integer
 #
 
+
 class Message < ActiveRecord::Base
   attr_accessible :content, :user_name, :room_id
   belongs_to :room

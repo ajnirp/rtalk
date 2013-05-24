@@ -1,13 +1,24 @@
 <% current_user = cookies[:user_name] %>
 <% user_count = @room.get_user_list.length %>
 
-<p>Welcome, <strong><%= current_user %></strong>! <%= render 'show_url' %> Click the <strong>Leave Room</strong> button when you want to leave the chat room. If everyone leaves the chat room, it will be removed and all your chat logs will be destroyed.</p>
+<p>Welcome, <strong><%= current_user %></strong>! Click the <strong>Leave Room</strong> button when you want to leave the chat room. If everyone leaves the chat room, it will be removed and all your chat logs will be destroyed.</p>
+
+<button id="copy_clip" class="btn btn-warning">Copy Room Key To Clipboard</button>
+<%= clippy("sample").html_safe %>
 
 <p>
-	There <%= "are" if user_count != 1 %><%= "is" if user_count == 1 %> <strong><%= pluralize(user_count, 'user') %></strong> here:
+	<strong><%= pluralize(user_count, 'user') %></strong> chatting right now:
 </p>
 
 <%= render 'show_users' %>
+
+<div class="row-fluid">
+	<ul id="chat">
+		<% @room.messages.each do |msg| %>
+			<%= render partial: 'message', locals: {message: msg} %>
+		<% end %>
+	</ul>
+</div>
 
 <div class="form-horizontal">
 	<%= form_for Message.new, remote: true, id: "new_message" do |f| %>
@@ -17,12 +28,6 @@
 		<%= f.submit "Send", class: "btn btn-info" %>
 	<% end %>
 </div>
-
-<ul id="chat">
-	<% @room.messages.reverse.each do |msg| %>
-		<%= render partial: 'message', locals: {message: msg} %>
-	<% end %>
-</ul>
 
 <div style="margin-top:15px">
 	<%= link_to "Leave Room", room_path(@room), method: :delete, class: "btn btn-danger" %>

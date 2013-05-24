@@ -32,6 +32,7 @@ class RoomsController < ApplicationController
 		@room = Room.find_by_key(key_input)
 		cookies[:user_name] = name_input
 		cookies[:room_key] = key_input
+		#PrivatePub.publish_to
 		@room.add_user(name_input)
 		redirect_to room_path(@room)
 	end

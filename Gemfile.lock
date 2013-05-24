@@ -124,6 +124,8 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails_autolink (1.1.0)
+      rails (> 3.1)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -164,6 +166,8 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     websocket-driver (0.2.0)
     yajl-ruby (1.1.0)
+    zeroclipboard-rails (0.0.2)
+      railties (~> 3.1)
 
 PLATFORMS
   ruby
@@ -180,8 +184,10 @@ DEPENDENCIES
   pg
   private_pub
   rails (= 3.2.13)
+  rails_autolink
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
   thin
   uglifier (>= 1.0.3)
+  zeroclipboard-rails
