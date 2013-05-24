@@ -1,4 +1,4 @@
-<%# publish_to "/messages/new" do %>
-	$("#chat").prepend("<%= j render partial: 'rooms/message', locals: {message: @message} %>");
-<%# end %>
+<% publish_to "/messages/new" do %>
+	$("#chat").append("<%= j render partial: 'rooms/message', locals: {message: @message} %>");
+<% end %>
 $("#new_message")[0].reset();
