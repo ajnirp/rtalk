@@ -12,7 +12,7 @@
 
 # the list of users is stored in the variable "users_list", which is actually a string
 class Room < ActiveRecord::Base
-	attr_accessible :key, :user_list
+	attr_accessible :key, :user_list, :title
 
 	has_many :messages, :dependent => :destroy
 

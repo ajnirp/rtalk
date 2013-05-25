@@ -1,5 +1,7 @@
 <% current_user = cookies[:user_name] %>
- 
+
+<h1><%= @room[:title] %></h1>
+
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">
@@ -14,7 +16,7 @@
 	</div>
 </div>
 
-<p>Welcome, <strong><%= current_user %></strong>! Click the <strong class="text-error">Leave Room</strong> button when you want to leave the chat room. If everyone leaves the chat room, it will be removed and all your chat logs will be destroyed.</p>
+<p>Welcome, <strong><%= current_user %></strong>.</p>
 
 <p>
 	<strong>Share the room key with your friends! Click to copy the rooom key to your clipboard:</strong> <%= clippy(@room[:key], bgcolor="CCCCCC").html_safe %>
@@ -22,12 +24,16 @@
 
 	<strong><%= pluralize(@room.get_user_list.length, 'person') %></strong> chatting right now:
 
-<%= render 'show_users' %>
+<div id="userlist">
+	<% @room.get_user_list.each do |usr| %>
+		<%= render partial: 'user', locals: { user: usr } %>
+	<% end %>
+</div>
 
 <div class="row-fluid">
 	<ul id="chat">
 		<% @room.messages.each do |msg| %>
-			<%= render partial: 'message', locals: {message: msg} %>
+			<%= render partial: 'message', locals: { message: msg } %>
 		<% end %>
 	</ul>
 </div>

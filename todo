@@ -4,16 +4,16 @@ when new user joins, update users list
 
 High:
 -- auto links - gem DONE with rails_autolink
-room title
+-- room title DONE
 fluid width
 -- copy to clipboard DONE
 -- user list display
 put 'about' bottom
 popover
--- help modal
+-- help modal DONE
 -- reverse chatbox message orientation (newest bottomost) DONE
 auto scrolldown (create.js.erb)
-export chat history as .txt, .pdf
+export chat history as .txt, .pdf (look into send_data and send_file)
 send mail with link to chat room
 chat search
 go off the record (no chat history)
