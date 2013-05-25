@@ -41,6 +41,10 @@ class RoomsController < ApplicationController
 		@room = Room.find(params[:id])	
 	end
 
+	def write_chat_logs
+		
+	end
+
 	private
 
 		def generate_random_url

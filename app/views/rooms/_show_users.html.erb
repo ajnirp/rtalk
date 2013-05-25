@@ -1,7 +1,5 @@
-<ul id="#userlist">
-	<% @room.get_user_list.each do |user| %>
-		<li><strong><%= user %></strong></li>
-	<% end %>
-</ul>
+<% @room.get_user_list.each do |user| %>
+	<p class="btn btn-info btn-small"><%= user %></p>
+<% end %>
 
 <%#= subscribe_to room_path(@room)+"_user_list" %>

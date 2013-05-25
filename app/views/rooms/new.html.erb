@@ -7,10 +7,10 @@
 		<%= text_field_tag :name, nil, :placeholder => "Name" %>
 	</div>
 	<div class="field">
-		<%= text_field_tag :title, nil, :placeholder => "Title" %>
+		<%= text_field_tag :title, nil, :placeholder => "Title (optional)" %>
 	</div>
 	<div class="actions">
-		<%= submit_tag "Choose name", :class => "btn btn-warning"%>
+		<%= submit_tag "Start chatting!", :class => "btn btn-warning"%>
 	</div>
 	<% flash.each do |key, value| %>
 		<br>
@@ -27,7 +27,6 @@ generate_name = function() {
     for( var i=0; i < 6; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 	$("#name").val(text);
-	$("#newroom").submit();
 }
 <% end %>
 
