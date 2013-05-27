@@ -16,21 +16,17 @@
 	</div>
 </div>
 
-<p>Welcome, <strong><%= current_user %></strong>. Share the room key with your friends!</p>
+<%= render partial: 'welcome', locals: { current_user: current_user } %>
 
-<p>
-	<strong>Click to copy <strong class="text-error"><%= @room.key %></strong> to your clipboard:</strong> <%= clippy(@room[:key], bgcolor="CCCCCC").html_safe %>
-</p>
+<!-- <p>
+	<strong><%#= pluralize(@room.get_user_list.length, 'person') %></strong> chatting right now:
+</p> -->
 
-<p>
-	<strong><%= pluralize(@room.get_user_list.length, 'person') %></strong> chatting right now:
-</p>
-
-<div id="userlist">
-	<% @room.get_user_list.each do |usr| %>
-		<%= render partial: 'user', locals: { user: usr } %>
-	<% end %>
-</div>
+<!-- <div id="userlist"> -->
+	<%# @room.get_user_list.each do |usr| %>
+		<%#= render partial: 'user', locals: { user: usr } %>
+	<%# end %>
+<!-- </div> -->
 
 <div class="row-fluid">
 	<ul id="chat">
@@ -51,20 +47,21 @@
 </div>
 
 <%= button_to "Leave Room", room_path(@room), method: :delete, class: "btn btn-danger", style: "float:left;margin-right:10px", id: "leaveroom", rel:"popver", :"data-content" => "When everyone leaves the room, it will be destroyed.", :"data-trigger" => "hover focus" %>
-<%= button_to "Export Chat History", "#", class:  "btn btn-success", style: "float:left;margin-right:10px", rel: "popover", :"data-content" => "Export chat history as a text file", :"data-trigger" => "hover focus", id: "exportchathistory" %>
-<a href="#myModal" id="help" class="btn btn-primary" role="button" data-toggle="modal" rel="popover" data-content="How to make and enter chat rooms" data-trigger="hover focus">Help</a>
+<%= button_to "Export Chat History", "#", class:  "btn btn-success", style: "float:left;margin-right:10px", rel: "popover", :"data-content" => "Export chat history as a text file", :"data-trigger" => "hover focus", id: "export_chat_history" %>
+<a href="#myModal" id="help" class="btn btn-primary" role="button" data-toggle="modal" rel="popover" data-content="How to use RTalk" data-trigger="hover focus">Help</a>
 
 <%= subscribe_to room_path(@room) %>
 <%= subscribe_to room_path(@room)+'_user_list' %>
 
 <script>
+	$("#chat").scrollTop($("#chat")[0].scrollHeight); //scroll down when the page is reloaded
 	$("#leaveroom").popover({
 		placement: "bottom"
 	});
 	$("#help").popover({
 		placement: "bottom"
 	});
-	$("#exportchathistory").popover({
+	$("#export_chat_history").popover({
 		placement: "bottom"
 	});
 </script>

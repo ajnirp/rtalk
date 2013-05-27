@@ -1,8 +1,9 @@
 bugs
 -- all messages are being published to messages/new, use rooms/:room_id instead DONE
-when new user joins, update users list
+-- when new user joins, update users list DEFERRED
 
 High:
+convert message time to local
 -- auto links - gem DONE with rails_autolink
 -- room title DONE
 fluid width
@@ -14,7 +15,7 @@ fluid width
 -- auto scrolldown as new messages are added DONE
 export chat history as .txt, .pdf (look into send_data and send_file)
 send mail with link to chat room
-chat search
+-- chat search DONE (there by default)
 go off the record (no chat history)
 replace forms with simple_form's forms
 upload files (see carrierwave, paperclip)

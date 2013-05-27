@@ -3624,7 +3624,7 @@ input[type="submit"].btn.btn-mini {
   display: inline-block;
   *display: inline;
   *margin-left: .3em;
-  font-size: 0;
+  font-size: 12pt;
   white-space: nowrap;
   vertical-align: middle;
   *zoom: 1;

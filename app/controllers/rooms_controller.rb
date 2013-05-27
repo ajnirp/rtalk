@@ -9,7 +9,10 @@ class RoomsController < ApplicationController
 			return
 		end
 		new_key = generate_random_url
-		@room = Room.create!(key: new_key, title: params[:title] || "Chat")
+		if params[:title].empty?
+			params[:title] = "Chat"
+		end
+		@room = Room.create!(key: new_key, title: params[:title])
 		cookies[:user_name] = name_input
 		cookies[:room_key] = new_key
 		@room.add_user(name_input)
@@ -18,8 +21,14 @@ class RoomsController < ApplicationController
 
 	def destroy
 		@room = Room.find(params[:id])
-		@room.remove_user(cookies[:user_name])
-		@room.destroy if @room.get_user_list.empty?
+		name = cookies[:user_name]
+		@room.remove_user(name)
+		if @room.get_user_list.empty?
+			@room.destroy
+		else
+			PrivatePub.publish_to room_path(@room) + '_user_list_leaves', name: name
+		end
+
 		redirect_to root_path
 	end
 
@@ -32,8 +41,8 @@ class RoomsController < ApplicationController
 		@room = Room.find_by_key(key_input)
 		cookies[:user_name] = name_input
 		cookies[:room_key] = key_input
-		#PrivatePub.publish_to
 		@room.add_user(name_input)
+		PrivatePub.publish_to room_path(@room) + '_user_list_joins', name: name_input
 		redirect_to room_path(@room)
 	end
 

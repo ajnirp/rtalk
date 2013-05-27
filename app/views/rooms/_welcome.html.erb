@@ -1,0 +1,5 @@
+<p>Welcome, <strong><%= current_user %></strong>. Share the room key with your friends!</p>
+
+<p>
+	<strong>Click to copy <strong class="text-error"><%= @room.key %></strong> to your clipboard:</strong> <%= clippy(@room[:key], bgcolor="CCCCCC").html_safe %>
+</p>
