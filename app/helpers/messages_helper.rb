@@ -1,18 +1,23 @@
 module MessagesHelper
-	EMOTICONS_MAPPER = {
-		":)" => "emoticons/smile-1-1.png",
-		";)" => "emoticons/smile-1-1.png",
-		":(" => "emoticons/smile-2-1.png",
-		":/" => "emoticons/smile-1-1.png",
-		":D" => "emoticons/happy-4.png",
-		"^_^" => "emoticons/smile-4-1.png",
-	}
+	# thanks to http://www.fbsmileys.com/
+	def emoticon(emotion)
+		image_tag(asset_path("emoticons/#{emotion}.png"))
+	end
+
 	def parse_emoticons(msg)
-		msg.gsub!(/(:\)|=\)|\(:|\(=)/, image_tag(asset_path EMOTICONS_MAPPER[":)"]))
-		msg.gsub!(/(:\(|=\(|\):|\)=)/, image_tag(asset_path EMOTICONS_MAPPER[":("]))
-		msg.gsub!(/:\//, image_tag(asset_path EMOTICONS_MAPPER[":/"]))
-		msg.gsub!(/(:D|=D)/, image_tag(asset_path EMOTICONS_MAPPER[":D"]))
-		msg.gsub!(/\^_\^/, image_tag(asset_path EMOTICONS_MAPPER["^_^"]))
+		msg.gsub!(/(:\)|=\)|\(:|\(=)/, emoticon("smile"))
+		msg.gsub!(/(:\(|=\(|\):|\)=)/, emoticon("frown"))
+		msg.gsub!(/(:\/|:\\)/, emoticon("unsure"))
+		msg.gsub!(/(:D|=D)/, emoticon("grin"))
+		msg.gsub!(/(:O|:-O|:-o|:o)/, emoticon("gasp"))
+		msg.gsub!(/(:P|=P)/, emoticon("tongue"))
+		msg.gsub!(/(o\.O|o_O)/, emoticon("confused"))
+		msg.gsub!(/:'\(/, emoticon("cry"))
+		msg.gsub!(/\^_\^/, emoticon("bliss"))
+		msg.gsub!(/<3/, emoticon("heart"))
+		msg.gsub!(/(>:\(|>:-\()/, emoticon("grumpy"))
+		msg.gsub!(/(8-\)|8\)|B-\)|B\))/, emoticon("glasses"))
+		msg.gsub!(/(8-\||8\||B-\||B\|)/, emoticon("sunglasses"))
 		msg.html_safe
 	end
 end

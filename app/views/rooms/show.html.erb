@@ -24,11 +24,9 @@
 
 	<strong><%= pluralize(@room.get_user_list.length, 'person') %></strong> chatting right now:
 
-<div id="userlist">
-	<% @room.get_user_list.each do |usr| %>
-		<%= render partial: 'user', locals: { user: usr } %>
-	<% end %>
-</div>
+<% @room.get_user_list.each do |usr| %>
+	<%= render partial: 'user', locals: { user: usr } %>
+<% end %>
 
 <div class="row-fluid">
 	<ul id="chat">
