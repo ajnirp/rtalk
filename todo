@@ -13,7 +13,7 @@ fluid width
 -- help modal DONE
 -- reverse chatbox message orientation (newest bottomost) DONE
 -- auto scrolldown as new messages are added DONE
-export chat history as .txt, .pdf (look into send_data and send_file)
+-- export chat history as .txt, .pdf (look into send_data and send_file) DONE
 send mail with link to chat room
 -- chat search DONE (there by default)
 go off the record (no chat history)

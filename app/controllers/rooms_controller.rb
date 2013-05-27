@@ -42,7 +42,7 @@ class RoomsController < ApplicationController
 		cookies[:user_name] = name_input
 		cookies[:room_key] = key_input
 		@room.add_user(name_input)
-		PrivatePub.publish_to room_path(@room) + '_user_list_joins', name: name_input
+		#PrivatePub.publish_to room_path(@room) + '_user_list_joins', name: name_input
 		redirect_to room_path(@room)
 	end
 
@@ -50,8 +50,14 @@ class RoomsController < ApplicationController
 		@room = Room.find(params[:id])	
 	end
 
-	def write_chat_logs
-		
+	def export_chat_logs
+		@room = Room.find(params[:room_id])
+		buffer = ""
+		@room.messages.each do |msg|
+			created_at = msg.created_at.strftime("%H:%M")
+			buffer << "[#{created_at}] #{msg.user_name}: #{msg.content}\n"
+		end
+		send_data buffer, filename: "chat_logs_#{@room.key}.txt"
 	end
 
 	private

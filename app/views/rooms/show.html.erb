@@ -46,8 +46,8 @@
 	<% end %>
 </div>
 
-<%= button_to "Leave Room", room_path(@room), method: :delete, class: "btn btn-danger", style: "float:left;margin-right:10px", id: "leaveroom", rel:"popver", :"data-content" => "When everyone leaves the room, it will be destroyed.", :"data-trigger" => "hover focus" %>
-<%= button_to "Export Chat History", "#", class:  "btn btn-success", style: "float:left;margin-right:10px", rel: "popover", :"data-content" => "Export chat history as a text file", :"data-trigger" => "hover focus", id: "export_chat_history" %>
+<%= button_to "Leave Room", room_path(@room), method: :delete, class: "btn btn-danger", style: "float:left;margin-right:10px", id: "leave_room", rel:"popver", :"data-content" => "When everyone leaves the room, it will be destroyed.", :"data-trigger" => "hover focus" %>
+<%= button_to "Export Chat History", export_logs_path(room_id: @room.key), class:  "btn btn-success", style: "float:left;margin-right:10px", rel: "popover", :"data-content" => "Export chat history as a text file", :"data-trigger" => "hover focus", id: "export_chat_history" %>
 <a href="#myModal" id="help" class="btn btn-primary" role="button" data-toggle="modal" rel="popover" data-content="How to use RTalk" data-trigger="hover focus">Help</a>
 
 <%= subscribe_to room_path(@room) %>
@@ -55,7 +55,7 @@
 
 <script>
 	$("#chat").scrollTop($("#chat")[0].scrollHeight); //scroll down when the page is reloaded
-	$("#leaveroom").popover({
+	$("#leave_room").popover({
 		placement: "bottom"
 	});
 	$("#help").popover({

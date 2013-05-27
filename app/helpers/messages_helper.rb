@@ -18,6 +18,7 @@ module MessagesHelper
 		msg.gsub!(/(>:\(|>:-\()/, emoticon("grumpy"))
 		msg.gsub!(/(8-\)|8\)|B-\)|B\))/, emoticon("glasses"))
 		msg.gsub!(/(8-\||8\||B-\||B\|)/, emoticon("sunglasses"))
+		msg.gsub!(/(:-\*|:\*)/, emoticon("kiss"))
 		msg.html_safe
 	end
 end
