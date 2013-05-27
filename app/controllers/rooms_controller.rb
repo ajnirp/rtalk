@@ -9,10 +9,7 @@ class RoomsController < ApplicationController
 			return
 		end
 		new_key = generate_random_url
-		@room = Room.create!(key: new_key)
-		if params[:title].empty?
-			@room[:title] = "Chat"
-		end
+		@room = Room.create!(key: new_key, title: params[:title] || "Chat")
 		cookies[:user_name] = name_input
 		cookies[:room_key] = new_key
 		@room.add_user(name_input)

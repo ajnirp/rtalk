@@ -7,22 +7,22 @@ High:
 -- room title DONE
 fluid width
 -- copy to clipboard DONE
--- user list display
-put 'about' bottom
-popover
+-- user list display DONE
+-- 	popovers for the buttons DONE
 -- help modal DONE
 -- reverse chatbox message orientation (newest bottomost) DONE
-auto scrolldown (create.js.erb)
+-- auto scrolldown as new messages are added DONE
 export chat history as .txt, .pdf (look into send_data and send_file)
 send mail with link to chat room
 chat search
 go off the record (no chat history)
 replace forms with simple_form's forms
 upload files (see carrierwave, paperclip)
+-- when user hovers over 'leave room' show tooltip DONE
 
 Low:
 multi line chat
-get better emoticons
+-- get better emoticons DONE
 
 Sub-low :)
 multiple rooms using tabs
