@@ -105,6 +105,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.3)
+    os (0.9.6)
     pg (0.15.1)
     polyglot (0.3.3)
     private_pub (1.0.3)
@@ -181,6 +182,7 @@ DEPENDENCIES
   debugger
   faker
   jquery-rails
+  os
   pg
   private_pub
   rails (= 3.2.13)

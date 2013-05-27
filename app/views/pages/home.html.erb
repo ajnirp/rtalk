@@ -1,5 +1,9 @@
 <h1>Welcome to RTalk!</h1>
 
+<% flash.each do |key, value| %>
+	<div class="flash text-<%= key %>"><%= value %></div>
+<% end %>
+
 <div style="text-align:center">
 	<%= image_tag asset_path('bubble2.png') %>
 	<%= image_tag asset_path('bubble2-flipped.png') %>

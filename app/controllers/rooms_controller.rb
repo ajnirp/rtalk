@@ -47,15 +47,24 @@ class RoomsController < ApplicationController
 	end
 
 	def show
-		@room = Room.find(params[:id])	
+		@room = Room.find(params[:id])
+		if cookies[:user_name].nil?
+			flash[:error] = "Please enter the room via the Join Private Chat button"
+			redirect_to root_path
+		end
 	end
 
 	def export_chat_logs
+		if OS.mac? or OS.linux?
+			newline_seq = "\n"
+		elsif OS.windows?
+			newline_seq = "\r\n"
+		end
 		@room = Room.find(params[:room_id])
 		buffer = ""
 		@room.messages.each do |msg|
 			created_at = msg.created_at.strftime("%H:%M")
-			buffer << "[#{created_at}] #{msg.user_name}: #{msg.content}\n"
+			buffer << "[#{created_at}] #{msg.user_name}: #{msg.content}#{newline_seq}"
 		end
 		send_data buffer, filename: "chat_logs_#{@room.key}.txt"
 	end

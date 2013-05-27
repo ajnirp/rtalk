@@ -1,6 +1,7 @@
 bugs
 -- all messages are being published to messages/new, use rooms/:room_id instead DONE
 -- when new user joins, update users list DEFERRED
+-- redirect users to home when cookies is empty DONE
 
 High:
 convert message time to local
@@ -20,9 +21,9 @@ go off the record (no chat history)
 replace forms with simple_form's forms
 upload files (see carrierwave, paperclip)
 -- when user hovers over 'leave room' show tooltip DONE
+multiline messages
 
 Low:
-multi line chat
 -- get better emoticons DONE
 
 Sub-low :)
